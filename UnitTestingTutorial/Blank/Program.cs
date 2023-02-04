@@ -32,12 +32,12 @@ namespace BankAccountNS
         {
             if (amount > m_balance)
             {
-                throw new Exception("amount");
+                throw new ArgumentOutOfRangeException("amount");
             }
 
             if (amount < 0)
             {
-                throw new Exception("amount");
+                throw new ArgumentOutOfRangeException("amount");
             }
 
             m_balance -= amount; // intentionally incorrect code
@@ -51,6 +51,16 @@ namespace BankAccountNS
             }
 
             m_balance += amount;
+        }
+
+        public void Commision(double amount)
+        {
+            if (amount < 0)
+            {
+                throw new ArgumentOutOfRangeException("amount");
+            }
+
+            m_balance -= amount;
         }
 
         public static void Main()

@@ -4,58 +4,39 @@ using System.Diagnostics;
 namespace MathTests
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTest2
     {
-        [AssemblyInitialize]
-        public static void AssemblyInitialize(TestContext testContext)
-        {
-            Trace.WriteLine("AssemblyInitialize");
-        }
+        //[AssemblyInitialize]
+        //public static void AssemblyInitialize(TestContext testContext)
+        //{
+        //}
 
-        [AssemblyCleanup]
-        public static void AssemblyCleanup()
-        {
-            Trace.WriteLine("AssemblyCleanup");
-        }
+        //[AssemblyCleanup]
+        //public static void AssemblyCleanup()
+        //{
+        //}
+
+        
+
         [ClassInitialize]
         public static void ClassInitialize(TestContext testContext)
         {
             //Trace.Listeners.Add(new ConsoleTraceListener());
-            Trace.WriteLine("ClassInitialize");
+            Trace.WriteLine("ClassInitialize2");
         }
 
         [ClassCleanup]
         public static void ClassCleanup()
         {
-            Trace.WriteLine("ClassCleanup");
+            Trace.WriteLine("ClassCleanup2");
         }
-
-        static int i = 0;
-
-        [TestInitialize]
-        public void TestInitialize()
-        {
-            i++;
-            Trace.WriteLine("TestInitialize"+i.ToString());
-        }
-
-        [TestCleanup]
-        public void TestCleanup()
-        {
-            Trace.WriteLine("TestCleanup");
-        }
-
-
-        
-
         [TestMethod]
         public void BasicRooterTest()
         {
             //Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
-
+           
             // or Trace.Listeners.Add(new ConsoleTraceListener());
-            Trace.WriteLine("BasicRooterTest");
-            
+            Trace.WriteLine("BasicRooterTest2");
             // Create an instance to test:
             Rooter rooter = new Rooter();
             // Define a test input and output value:
@@ -77,10 +58,6 @@ namespace MathTests
             double input = expectedResult * expectedResult;
             // Run the method under test:
             double actualResult = rooter.SquareRoot(input);
-
-            System.Fakes.ShimDateTime.NowGet =
-               () =>
-               { return new DateTime(fixedYear, 1, 1); };
             // Verify the result:
             Assert.AreEqual(expectedResult, actualResult, delta: expectedResult / 100);
         }
